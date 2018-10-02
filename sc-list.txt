@@ -1,0 +1,12 @@
+RG.ESB.Common.cls
+RG.ESB.Generated.SAPOperation.cls
+RG.ESB.Message.IDocStreamRequest.cls
+RG.ESB.Message.IDocStreamResponse.cls
+RG.ESB.Message.TIDResponse.cls
+RG.ESB.Operation.SAPUnwrapper.cls
+RG.ESB.Operation.SAPWrapper.cls
+RG.ESB.Process.IDocProcess.cls
+RG.ESB.Production.SAPProduction.cls
+RG.ESB.SAP.TIDQueue.cls
+RG.ESB.SAPProduction.cls
+RG.ESB.Service.Initiator.cls

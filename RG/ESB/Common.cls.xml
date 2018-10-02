@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Common">
+<Description>
+Общие данные</Description>
+<Abstract>1</Abstract>
+<TimeCreated>64924,67060.265094</TimeCreated>
+
+<Parameter name="SAPDELIMITER">
+<Type>%String</Type>
+<Default>:::::</Default>
+</Parameter>
+</Class>
+</Export>

@@ -1,0 +1,1 @@
+SAP libraries such as sapjco3 & sapidoc3 should be downloaded separately from http://www.sap.com

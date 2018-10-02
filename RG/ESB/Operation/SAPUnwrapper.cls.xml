@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Operation.SAPUnwrapper">
+<Description>
+Обработка псевдоответа от SAP</Description>
+<Super>Ens.BusinessOperation</Super>
+<TimeCreated>64925,43457.348883</TimeCreated>
+
+<Parameter name="INVOCATION">
+<Default>Queue</Default>
+</Parameter>
+
+<Method name="OnMessage">
+<Description>
+This is the default message handler.  All request types not declared in the message map are delivered here</Description>
+<FormalSpec>pRequest:Ens.Request,*pResponse:RG.ESB.Message.TIDResponse</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	s tid = ""
+	s tRequestId = pRequest.%Id()
+	
+	// Получаем TID из развязочной таблицы и отправляем его в ответе Отправителю.
+	$$$TRACE("MessageBodyId = " _ tRequestId)
+	&sql(select TID into :tid from RG_ESB_SAP.TIDQueue where Request = :tRequestId)
+	
+	$$$TRACE("Got TID=" _ tid _ " for RequestId=" _ tRequestId)
+	
+	// Формируем Ответ
+	s pResponse = ##class(RG.ESB.Message.TIDResponse).%New()
+	s pResponse.TID = tid
+	s pResponse.Request = pRequest
+
+
+	// Нужно удалять полученную запись.
+	// Дополнить класс TIDQueue нужным методом и вызывать его здесь.
+	
+
+	q $$$OK
+]]></Implementation>
+</Method>
+</Class>
+</Export>

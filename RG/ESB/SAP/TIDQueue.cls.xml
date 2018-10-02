@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.SAP.TIDQueue">
+<Description>
+Intermediate Queue between Messages and SAP Transaction ID</Description>
+<IncludeCode>Ensemble</IncludeCode>
+<Super>%Persistent</Super>
+<TimeCreated>64922,63063.992724</TimeCreated>
+
+<Property name="TID">
+<Description>
+SAP Transaction ID (issued by SAP inside of SAPOperation)</Description>
+<Type>%String</Type>
+<Required>1</Required>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="Token">
+<Description>
+Token allocated by DeferResponse() (for future use of Deferred Responses)</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="Request">
+<Description>
+Request's MessageId</Description>
+<Type>Ens.Request</Type>
+</Property>
+
+<Method name="AddRecord">
+<Description>
+Add a new link record</Description>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>RequestOid:%String,Token:%String="",TID:%String=""</FormalSpec>
+<ReturnType>%Boolean</ReturnType>
+<Implementation><![CDATA[
+	// Checking for input
+	if ((Token = "") && (RequestId = "")) {
+		$$$LOGERROR("TIDQueue: Both Token and RequestId are empty, exiting")
+		q $$$NO	
+	}
+	if (TID = "") {
+		$$$LOGERROR("TIDQueue: TID cannot be empty, exiting")
+		q $$$NO
+	}
+	
+	s record = ..%New()
+	s record.Request = ##class(Ens.Request).%Open(RequestOid)
+	s record.TID = TID
+	s record.Token = Token
+	
+	// Saving new Record
+	#dim sc As %Status
+	s sc = record.%Save()
+	if ($$$ISERR(sc)) {
+		$$$LOGERROR("TIDQueue: Error Saving Object:" _ sc)
+		q $$$NO
+	}
+	
+	$$$TRACE("TIDQueue: New record Saved")
+	
+	q $$$OK
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+<DataLocation>^RG.ESB.SAP.TIDQueueD</DataLocation>
+<DefaultData>TIDQueueDefaultData</DefaultData>
+<IdLocation>^RG.ESB.SAP.TIDQueueD</IdLocation>
+<IndexLocation>^RG.ESB.SAP.TIDQueueI</IndexLocation>
+<StreamLocation>^RG.ESB.SAP.TIDQueueS</StreamLocation>
+<Data name="TIDQueueDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>TID</Value>
+</Value>
+<Value name="3">
+<Value>Token</Value>
+</Value>
+<Value name="4">
+<Value>Request</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

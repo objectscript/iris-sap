@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Generated.SAPOperation">
+<Description>
+Java Business Operation which runs Java class ru.intersystems.SAPOperation</Description>
+<Super>Ens.Java.Operation.PassthroughOperation</Super>
+<TimeCreated>64925,36173.989006</TimeCreated>
+<GeneratedBy>EnsPortal.GenerateJBHFrame</GeneratedBy>
+
+<Property name="Address">
+<Description>
+IP address or name of the machine where the Java Gateway Server is located.</Description>
+<Type>%String</Type>
+<InitialExpression>"127.0.0.1"</InitialExpression>
+</Property>
+
+<Property name="IRISHost">
+<Description>
+IRISHost property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="IRISNamespace">
+<Description>
+IRISNamespace property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="IRISPassword">
+<Description>
+IRISPassword property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="IRISPort">
+<Description>
+IRISPort property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="IRISUsername">
+<Description>
+IRISUsername property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="JCoDestinationsDir">
+<Description>
+JCoDestinationsDir property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="JCoName">
+<Description>
+JCoName property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="JarFile">
+<Description>
+Path to JAR file containing Java-side implementation of this Business Operation</Description>
+<Type>%String</Type>
+<InitialExpression>"C:\SAP\SAPExchange.jar"</InitialExpression>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="JavaGatewayService">
+<Description>
+Name of the Config Item for the Java Gateway Server.  If specified, the Address and Port of the selected Java Gateway Server override any values entered in the Address and Port settings.</Description>
+<Type>%String</Type>
+<InitialExpression>"EnsLib.JavaGateway.Initiator"</InitialExpression>
+</Property>
+
+<Property name="LogFileName">
+<Description>
+LogFileName property used by the Java class</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="255"/>
+</Property>
+
+<Property name="Port">
+<Description>
+TCP port number for communication between the Java Gateway Server and the proxy classes in IRIS.</Description>
+<Type>%String</Type>
+<InitialExpression>55556</InitialExpression>
+</Property>
+
+<Parameter name="JavaClass">
+<Default>ru.intersystems.SAPOperation</Default>
+</Parameter>
+
+<Parameter name="SETTINGS">
+<Default>JCoDestinationsDir,JCoName,LogFileName,IRISHost,IRISPort,IRISNamespace,IRISUsername,IRISPassword</Default>
+</Parameter>
+</Class>
+</Export>

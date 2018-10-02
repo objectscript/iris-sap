@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Process.IDocProcess">
+<Description>
+Тестовый процесс обработки</Description>
+<Super>Ens.BusinessProcessBPL</Super>
+<TimeCreated>64924,66377.986353</TimeCreated>
+
+<XData name="BPL">
+<Description>
+BPL Definition</Description>
+<XMLNamespace>http://www.intersystems.com/bpl</XMLNamespace>
+<Data><![CDATA[
+<process language='objectscript' request='RG.ESB.Message.IDocStreamRequest' response='RG.ESB.Message.TIDResponse' version='3' height='2000' width='2000' >
+<sequence xend='200' yend='650' >
+<trace name='BP Entry' value='"BP Entry"' xpos='200' ypos='250' >
+<annotation><![CDATA[Вход в БП]]]]><![CDATA[></annotation>
+</trace>
+<call name='Преобразование запроса' target='RG.ESB.Operation.SAPWrapper' async='0' xpos='200' ypos='350' >
+<annotation><![CDATA[Дополняем поток для передачи в SAPOperation]]]]><![CDATA[></annotation>
+<request type='RG.ESB.Message.IDocStreamRequest' >
+<assign property="callrequest" value="request" action="set" />
+</request>
+<response type='RG.ESB.Message.IDocStreamResponse' >
+<assign property="request.Stream" value="callresponse.Stream" action="set" />
+</response>
+</call>
+<call name='Вызов операции JBH' target='RG.ESB.Generated.SAPOperation' async='0' xpos='200' ypos='450' >
+<annotation><![CDATA[Вызываем Java-операцию отправки данных]]]]><![CDATA[></annotation>
+<request type='RG.ESB.Message.IDocStreamRequest' >
+<assign property="callrequest.Stream" value="request.Stream" action="set" />
+</request>
+<response type='Ens.Response' />
+</call>
+<call name='Получение TID' target='RG.ESB.Operation.SAPUnwrapper' async='0' xpos='200' ypos='550' >
+<annotation><![CDATA[Получаем TID из развязки]]]]><![CDATA[></annotation>
+<request type='RG.ESB.Message.IDocStreamRequest' >
+<assign property="callrequest" value="request" action="set" />
+</request>
+<response type='RG.ESB.Message.TIDResponse' >
+<assign property="response" value="callresponse" action="set" />
+</response>
+</call>
+</sequence>
+</process>
+]]></Data>
+</XData>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+</Storage>
+</Class>
+</Export>

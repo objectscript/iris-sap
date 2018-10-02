@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Message.TIDResponse">
+<Description>
+Сообщение-ответ с TID от SAP</Description>
+<Super>Ens.Response</Super>
+<TimeCreated>64925,40741.255637</TimeCreated>
+
+<Property name="Request">
+<Description>
+Начальный звпрос</Description>
+<Type>Ens.Request</Type>
+</Property>
+
+<Property name="TID">
+<Description>
+SAP Transaction ID</Description>
+<Type>%String</Type>
+</Property>
+
+<Property name="Token">
+<Description>
+Token (при использовании DeferredResponses)</Description>
+<Type>%String</Type>
+</Property>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+<DefaultData>TIDResponseDefaultData</DefaultData>
+<Data name="TIDResponseDefaultData">
+<Structure>listnode</Structure>
+<Subscript>"TIDResponse"</Subscript>
+<Value name="1">
+<Value>Request</Value>
+</Value>
+<Value name="2">
+<Value>TID</Value>
+</Value>
+<Value name="3">
+<Value>Token</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

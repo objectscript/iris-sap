@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Message.IDocStreamRequest">
+<Description>
+Тестовое сообщение, содержащее поток с IDoc</Description>
+<Super>Ens.Request</Super>
+<TimeCreated>64924,57875.05004</TimeCreated>
+
+<Property name="Stream">
+<Description>
+IDoc XML</Description>
+<Type>%Stream.GlobalCharacter</Type>
+</Property>
+
+<Property name="TID">
+<Description>
+TID (SAP Transaction ID)</Description>
+<Type>%String</Type>
+</Property>
+
+<Property name="SAPSessionId">
+<Description>
+SAP SessionId</Description>
+<Type>%String</Type>
+</Property>
+
+<Property name="SAPConnectionId">
+<Description>
+SAP ConnectionId</Description>
+<Type>%String</Type>
+</Property>
+
+<Method name="AddRecord">
+<Description>
+This method intended for creating new requests from JBH</Description>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>TID:%String,SAPSessionId:%String,SAPConnectionId:%String,Stream:Ens.StreamContainer</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+
+	$$$TRACE("AddRecord: TID=" _ TID _ ", SAPSessionId=" _ SAPSessionId_ ", SAPConnectionId=" _ SAPConnectionId _ ", Stream=" _ Stream.Stream.Read())
+	do Stream.Stream.Rewind()
+	
+	// Creating new Request from outside
+	s record = ..%New()
+	s record.TID = TID
+	s record.SAPSessionId = SAPSessionId
+	s record.SAPConnectionId = SAPConnectionId
+	d record.Stream.CopyFrom(Stream.Stream)
+	
+	// Saving new Record
+	#dim sc As %Status
+	s sc = record.%Save()
+	if ($$$ISERR(sc)) {
+		$$$LOGERROR(..%ClassName() _ ": Error Saving Object:" _ sc)
+		q ""
+	}
+	
+	$$$TRACE(..%ClassName() _ ": New record Saved as " _ record.%Id())
+	
+	q record.%Oid()
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+<DefaultData>IDocStreamRequestDefaultData</DefaultData>
+<Data name="IDocStreamRequestDefaultData">
+<Subscript>"IDocStreamRequest"</Subscript>
+<Value name="1">
+<Value>Stream</Value>
+</Value>
+<Value name="2">
+<Value>TID</Value>
+</Value>
+<Value name="3">
+<Value>SAPSessionId</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

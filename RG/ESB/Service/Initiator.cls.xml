@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Service.Initiator">
+<Description>
+Тестовая служба для проверки Продукции. Запускает процесс отправки документов через Бизнес-Процесс.</Description>
+<Super>Ens.BusinessService</Super>
+<TimeCreated>64924,56196.961541</TimeCreated>
+
+<Parameter name="ADAPTER">
+<Default>EnsLib.File.InboundAdapter</Default>
+</Parameter>
+
+<Property name="Destination">
+<Description>
+Бизнес-компонент, на который пойдёт Запрос.</Description>
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="1024"/>
+</Property>
+
+<Parameter name="SETTINGS">
+<Default>Destination:SAP:selector?context={En1s.ContextSearch/ProductionItems?productionName=@productionId}</Default>
+</Parameter>
+
+<Method name="OnProcessInput">
+<FormalSpec>pInput:%Stream.Object,*pOutput:%RegisteredObject</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	s message = ##class(RG.ESB.Message.IDocStreamRequest).%New()
+	d message.Stream.CopyFromAndSave(pInput)
+
+	d pInput.Rewind()
+	$$$TRACE("Incoming iDoc received: " _ pInput.Read(1024))
+	
+	$$$TRACE("Sending to Destination: " _ ..Destination)
+
+	#dim response As RG.ESB.Message.TIDResponse = ##class(RG.ESB.Message.TIDResponse).%New()
+	s sc = ..SendRequestSync(..Destination, message, .response)
+	if ($$$ISERR(sc)) {
+		$$$LOGERROR(sc)
+		q sc	
+	}
+	$$$TRACE("Response TID: " _ response.TID)
+	
+	//d ##class(Ens.Director).EnableConfigItem(
+	q $$$OK
+]]></Implementation>
+</Method>
+</Class>
+</Export>

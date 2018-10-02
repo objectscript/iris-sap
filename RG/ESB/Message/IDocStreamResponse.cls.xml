@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="RG.ESB.Message.IDocStreamResponse">
+<Description>
+Тестовое сообщение, содержащее поток с IDoc</Description>
+<Super>Ens.Response</Super>
+<TimeCreated>64925,29607.345223</TimeCreated>
+
+<Property name="Stream">
+<Description><![CDATA[
+Объединённый с MessageId & Token поток]]></Description>
+<Type>%Stream.GlobalCharacter</Type>
+</Property>
+</Class>
+</Export>
