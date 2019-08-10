@@ -1,7 +1,7 @@
 # iris-sap
 IRIS SAP Adapters (very 1st published ENG version)
 
-This is a very prototype (*working prototype*) to deal any conversations with SAP products using IDoc format.
+This is a prototype (*working prototype*) to deal any conversations with SAP products using IDoc format.
 
 ## Features
 * Bi-Directional communication between IRIS and SAP using IDocs.
