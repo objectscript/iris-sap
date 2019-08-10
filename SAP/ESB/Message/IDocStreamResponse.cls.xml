@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.Message.IDocStreamResponse">
+<Class name="SAP.ESB.Message.IDocStreamResponse">
 <Description>
 Тестовое сообщение, содержащее поток с IDoc</Description>
 <Super>Ens.Response</Super>
@@ -11,5 +11,17 @@
 Объединённый с MessageId & Token поток]]></Description>
 <Type>%Stream.GlobalCharacter</Type>
 </Property>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+<DefaultData>IDocStreamResponseDefaultData</DefaultData>
+<Data name="IDocStreamResponseDefaultData">
+<Structure>listnode</Structure>
+<Subscript>"IDocStreamResponse"</Subscript>
+<Value name="1">
+<Value>Stream</Value>
+</Value>
+</Data>
+</Storage>
 </Class>
 </Export>

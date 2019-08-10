@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.Service.Initiator">
+<Class name="SAP.ESB.Service.Initiator">
 <Description>
 Тестовая служба для проверки Продукции. Запускает процесс отправки документов через Бизнес-Процесс.</Description>
 <Super>Ens.BusinessService</Super>
@@ -25,7 +25,7 @@
 <FormalSpec>pInput:%Stream.Object,*pOutput:%RegisteredObject</FormalSpec>
 <ReturnType>%Status</ReturnType>
 <Implementation><![CDATA[
-	s message = ##class(RG.ESB.Message.IDocStreamRequest).%New()
+	s message = ##class(SAP.ESB.Message.IDocStreamRequest).%New()
 	d message.Stream.CopyFromAndSave(pInput)
 
 	d pInput.Rewind()
@@ -33,7 +33,7 @@
 	
 	$$$TRACE("Sending to Destination: " _ ..Destination)
 
-	#dim response As RG.ESB.Message.TIDResponse = ##class(RG.ESB.Message.TIDResponse).%New()
+	#dim response As SAP.ESB.Message.TIDResponse = ##class(SAP.ESB.Message.TIDResponse).%New()
 	s sc = ..SendRequestSync(..Destination, message, .response)
 	if ($$$ISERR(sc)) {
 		$$$LOGERROR(sc)

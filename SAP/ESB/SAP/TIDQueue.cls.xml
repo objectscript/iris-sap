@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.SAP.TIDQueue">
+<Class name="SAP.ESB.SAP.TIDQueue">
 <Description>
 Intermediate Queue between Messages and SAP Transaction ID</Description>
 <IncludeCode>Ensemble</IncludeCode>
@@ -66,12 +66,14 @@ Add a new link record</Description>
 
 <Storage name="Default">
 <Type>%Storage.Persistent</Type>
-<DataLocation>^RG.ESB.SAP.TIDQueueD</DataLocation>
+<DataLocation>^SAP.ESB.SAP.TIDQueueD</DataLocation>
 <DefaultData>TIDQueueDefaultData</DefaultData>
-<IdLocation>^RG.ESB.SAP.TIDQueueD</IdLocation>
-<IndexLocation>^RG.ESB.SAP.TIDQueueI</IndexLocation>
-<StreamLocation>^RG.ESB.SAP.TIDQueueS</StreamLocation>
+<IdLocation>^SAP.ESB.SAP.TIDQueueD</IdLocation>
+<IndexLocation>^SAP.ESB.SAP.TIDQueueI</IndexLocation>
+<StreamLocation>^SAP.ESB.SAP.TIDQueueS</StreamLocation>
 <Data name="TIDQueueDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
 <Value name="1">
 <Value>%%CLASSNAME</Value>
 </Value>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.Message.TIDResponse">
+<Class name="SAP.ESB.Message.TIDResponse">
 <Description>
 Сообщение-ответ с TID от SAP</Description>
 <Super>Ens.Response</Super>

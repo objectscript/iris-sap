@@ -10,3 +10,4 @@ RG.ESB.Production.SAPProduction.cls
 RG.ESB.SAP.TIDQueue.cls
 RG.ESB.SAPProduction.cls
 RG.ESB.Service.Initiator.cls
+SAP.pkg

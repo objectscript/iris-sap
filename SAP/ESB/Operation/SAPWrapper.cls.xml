@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.Operation.SAPWrapper">
+<Class name="SAP.ESB.Operation.SAPWrapper">
 <Description>
 Операция добавляет заголовок к сообщению, передаваемому в Java-Операцию</Description>
-<Super>Ens.BusinessOperation,RG.ESB.Common</Super>
+<Super>Ens.BusinessOperation,SAP.ESB.Common</Super>
 <TimeCreated>64922,64689.283136</TimeCreated>
 
 <Parameter name="INVOCATION">
@@ -13,11 +13,11 @@
 <Method name="OnMessage">
 <Description>
 This is the default message handler.  All request types not declared in the message map are delivered here</Description>
-<FormalSpec>pRequest:RG.ESB.Message.IDocStreamRequest,*pResponse:RG.ESB.Message.IDocStreamResponse</FormalSpec>
+<FormalSpec>pRequest:SAP.ESB.Message.IDocStreamRequest,*pResponse:SAP.ESB.Message.IDocStreamResponse</FormalSpec>
 <ReturnType>%Status</ReturnType>
 <Implementation><![CDATA[
 	
-	s pResponse = ##class(RG.ESB.Message.IDocStreamResponse).%New()
+	s pResponse = ##class(SAP.ESB.Message.IDocStreamResponse).%New()
 	
 	s token = ""
 	

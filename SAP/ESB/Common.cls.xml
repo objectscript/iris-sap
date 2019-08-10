@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="RG.ESB.Common">
+<Class name="SAP.ESB.Common">
 <Description>
 Общие данные</Description>
 <Abstract>1</Abstract>
