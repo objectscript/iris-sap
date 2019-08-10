@@ -2,13 +2,13 @@
 <Export generator="IRIS" version="26">
 <Class name="SAP.ESB.Message.IDocStreamResponse">
 <Description>
-Тестовое сообщение, содержащее поток с IDoc</Description>
+Message with IDoc stream</Description>
 <Super>Ens.Response</Super>
 <TimeCreated>64925,29607.345223</TimeCreated>
 
 <Property name="Stream">
 <Description><![CDATA[
-Объединённый с MessageId & Token поток]]></Description>
+Stream combined with MessageId & Token]]></Description>
 <Type>%Stream.GlobalCharacter</Type>
 </Property>
 
@@ -16,7 +16,6 @@
 <Type>%Storage.Persistent</Type>
 <DefaultData>IDocStreamResponseDefaultData</DefaultData>
 <Data name="IDocStreamResponseDefaultData">
-<Structure>listnode</Structure>
 <Subscript>"IDocStreamResponse"</Subscript>
 <Value name="1">
 <Value>Stream</Value>

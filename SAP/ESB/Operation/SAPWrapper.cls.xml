@@ -2,7 +2,7 @@
 <Export generator="IRIS" version="26">
 <Class name="SAP.ESB.Operation.SAPWrapper">
 <Description>
-Операция добавляет заголовок к сообщению, передаваемому в Java-Операцию</Description>
+Operation add "dummy" header to the Message that going to JavaOperation.</Description>
 <Super>Ens.BusinessOperation,SAP.ESB.Common</Super>
 <TimeCreated>64922,64689.283136</TimeCreated>
 
@@ -21,7 +21,7 @@ This is the default message handler.  All request types not declared in the mess
 	
 	s token = ""
 	
-	// Если понадобится функция отложенного ответа - нужно заполнить Token
+	// If you need Deferred response call DeferResponse and take a Token.
 	//d ..DeferResponse(.token)
 	
 	s header = token _ ..#SAPDELIMITER _ pRequest.%Oid() _ ..#SAPDELIMITER

@@ -2,13 +2,13 @@
 <Export generator="IRIS" version="26">
 <Class name="SAP.ESB.Message.TIDResponse">
 <Description>
-Сообщение-ответ с TID от SAP</Description>
+Response from SAP with TID</Description>
 <Super>Ens.Response</Super>
 <TimeCreated>64925,40741.255637</TimeCreated>
 
 <Property name="Request">
 <Description>
-Начальный звпрос</Description>
+Primary Request</Description>
 <Type>Ens.Request</Type>
 </Property>
 
@@ -20,7 +20,7 @@ SAP Transaction ID</Description>
 
 <Property name="Token">
 <Description>
-Token (при использовании DeferredResponses)</Description>
+Token (when DeferredResponse is used)</Description>
 <Type>%String</Type>
 </Property>
 
@@ -28,7 +28,6 @@ Token (при использовании DeferredResponses)</Description>
 <Type>%Storage.Persistent</Type>
 <DefaultData>TIDResponseDefaultData</DefaultData>
 <Data name="TIDResponseDefaultData">
-<Structure>listnode</Structure>
 <Subscript>"TIDResponse"</Subscript>
 <Value name="1">
 <Value>Request</Value>

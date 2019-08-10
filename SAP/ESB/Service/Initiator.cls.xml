@@ -18,7 +18,7 @@
 </Property>
 
 <Parameter name="SETTINGS">
-<Default>Destination:SAP:selector?context={En1s.ContextSearch/ProductionItems?productionName=@productionId}</Default>
+<Default>Destination:SAP:selector?context={Ens.ContextSearch/ProductionItems?productionName=@productionId}</Default>
 </Parameter>
 
 <Method name="OnProcessInput">

@@ -2,7 +2,7 @@
 <Export generator="IRIS" version="26">
 <Class name="SAP.ESB.Operation.SAPUnwrapper">
 <Description>
-Обработка псевдоответа от SAP</Description>
+Handling pseudo-response from SAP</Description>
 <Super>Ens.BusinessOperation</Super>
 <TimeCreated>64925,43457.348883</TimeCreated>
 
@@ -19,20 +19,20 @@ This is the default message handler.  All request types not declared in the mess
 	s tid = ""
 	s tRequestId = pRequest.%Id()
 	
-	// Получаем TID из развязочной таблицы и отправляем его в ответе Отправителю.
+	// Getting TID from look-up (interchange) table and send it as Response to Requester.
 	$$$TRACE("MessageBodyId = " _ tRequestId)
-	&sql(select TID into :tid from SAP_ESB_SAP.TIDQueue where Request = :tRequestId)
+	&sql(select TID into :tid from SAP_ESB.TIDQueue where Request = :tRequestId)
 	
 	$$$TRACE("Got TID=" _ tid _ " for RequestId=" _ tRequestId)
 	
-	// Формируем Ответ
+	// Filling response
 	s pResponse = ##class(SAP.ESB.Message.TIDResponse).%New()
 	s pResponse.TID = tid
 	s pResponse.Request = pRequest
 
 
-	// Нужно удалять полученную запись.
-	// Дополнить класс TIDQueue нужным методом и вызывать его здесь.
+	// Probably we've to delete record from TIDQueue here.
+	// Add your logic below.
 	
 
 	q $$$OK

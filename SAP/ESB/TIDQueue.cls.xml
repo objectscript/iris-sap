@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="IRIS" version="26">
-<Class name="SAP.ESB.SAP.TIDQueue">
+<Class name="SAP.ESB.TIDQueue">
 <Description>
 Intermediate Queue between Messages and SAP Transaction ID</Description>
 <IncludeCode>Ensemble</IncludeCode>
@@ -36,7 +36,7 @@ Add a new link record</Description>
 <ReturnType>%Boolean</ReturnType>
 <Implementation><![CDATA[
 	// Checking for input
-	if ((Token = "") && (RequestId = "")) {
+	if ((Token = "") && (RequestOid = "")) {
 		$$$LOGERROR("TIDQueue: Both Token and RequestId are empty, exiting")
 		q $$$NO	
 	}
@@ -63,30 +63,5 @@ Add a new link record</Description>
 	q $$$OK
 ]]></Implementation>
 </Method>
-
-<Storage name="Default">
-<Type>%Storage.Persistent</Type>
-<DataLocation>^SAP.ESB.SAP.TIDQueueD</DataLocation>
-<DefaultData>TIDQueueDefaultData</DefaultData>
-<IdLocation>^SAP.ESB.SAP.TIDQueueD</IdLocation>
-<IndexLocation>^SAP.ESB.SAP.TIDQueueI</IndexLocation>
-<StreamLocation>^SAP.ESB.SAP.TIDQueueS</StreamLocation>
-<Data name="TIDQueueDefaultData">
-<Structure>listnode</Structure>
-<Subscript/>
-<Value name="1">
-<Value>%%CLASSNAME</Value>
-</Value>
-<Value name="2">
-<Value>TID</Value>
-</Value>
-<Value name="3">
-<Value>Token</Value>
-</Value>
-<Value name="4">
-<Value>Request</Value>
-</Value>
-</Data>
-</Storage>
 </Class>
 </Export>

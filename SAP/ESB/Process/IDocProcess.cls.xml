@@ -2,9 +2,13 @@
 <Export generator="IRIS" version="26">
 <Class name="SAP.ESB.Process.IDocProcess">
 <Description>
-Тестовый процесс обработки</Description>
+Demo process</Description>
 <Super>Ens.BusinessProcessBPL</Super>
 <TimeCreated>64924,66377.986353</TimeCreated>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+</Storage>
 
 <XData name="BPL">
 <Description>
@@ -14,10 +18,10 @@ BPL Definition</Description>
 <process language='objectscript' request='SAP.ESB.Message.IDocStreamRequest' response='SAP.ESB.Message.TIDResponse' version='3' height='2000' width='2000' >
 <sequence xend='200' yend='650' >
 <trace name='BP Entry' value='"BP Entry"' xpos='200' ypos='250' >
-<annotation><![CDATA[Вход в БП]]]]><![CDATA[></annotation>
+<annotation><![CDATA[BP Entry]]]]><![CDATA[></annotation>
 </trace>
-<call name='Преобразование запроса' target='SAP.ESB.Operation.SAPWrapper' async='0' xpos='200' ypos='350' >
-<annotation><![CDATA[Дополняем поток для передачи в SAPOperation]]]]><![CDATA[></annotation>
+<call name='Converting Request' target='SAP.ESB.Operation.SAPWrapper' async='0' xpos='200' ypos='350' >
+<annotation><![CDATA[Transforming stream for SAPOperation]]]]><![CDATA[></annotation>
 <request type='SAP.ESB.Message.IDocStreamRequest' >
 <assign property="callrequest" value="request" action="set" />
 </request>
@@ -25,15 +29,15 @@ BPL Definition</Description>
 <assign property="request.Stream" value="callresponse.Stream" action="set" />
 </response>
 </call>
-<call name='Вызов операции JBH' target='SAP.ESB.Generated.SAPOperation' async='0' xpos='200' ypos='450' >
-<annotation><![CDATA[Вызываем Java-операцию отправки данных]]]]><![CDATA[></annotation>
+<call name='Call JBH Operation' target='SAP.ESB.Generated.SAPOperation' async='0' xpos='200' ypos='450' >
+<annotation><![CDATA[Calling Java-Operation to send a data]]]]><![CDATA[></annotation>
 <request type='SAP.ESB.Message.IDocStreamRequest' >
 <assign property="callrequest.Stream" value="request.Stream" action="set" />
 </request>
 <response type='Ens.Response' />
 </call>
-<call name='Получение TID' target='SAP.ESB.Operation.SAPUnwrapper' async='0' xpos='200' ypos='550' >
-<annotation><![CDATA[Получаем TID из развязки]]]]><![CDATA[></annotation>
+<call name='Getting TID' target='SAP.ESB.Operation.SAPUnwrapper' async='0' xpos='200' ypos='550' >
+<annotation><![CDATA[Getting corresponding TID from look-up table]]]]><![CDATA[></annotation>
 <request type='SAP.ESB.Message.IDocStreamRequest' >
 <assign property="callrequest" value="request" action="set" />
 </request>
@@ -45,9 +49,5 @@ BPL Definition</Description>
 </process>
 ]]></Data>
 </XData>
-
-<Storage name="Default">
-<Type>%Storage.Persistent</Type>
-</Storage>
 </Class>
 </Export>
